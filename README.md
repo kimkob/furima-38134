@@ -1,24 +1,71 @@
-# README
+#テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users
 
-Things you may want to cover:
+| Column                | Type       | Options                        |
+| --------------------- | ---------- | ------------------------------ |
+| user                  | string     | null: false,                   |
+| email                 | string     | null: false,                   |
+| password              | string     | null: false,                   |
+| encrypted_password    | string     | null: false,                   |
+| family_name           | string     | null: false,                   |
+| first_name            | string     | null: false,                   |
+| family_kana           | string     | null: false,                   |
+| first_kana            | string     | null: false,                   |
+| birthday              | date       | null: false,                   |
 
-* Ruby version
+- has_many :items
+- has_many :orders
+- has_one :order
 
-* System dependencies
 
-* Configuration
+## items
 
-* Database creation
+| Column                | Type         | Options                        |
+| --------------------- | ------------ | ------------------------------ |
+| image                 | string       | null: false,                   |
+| name                  | string       | null: false,                   |
+| explain               | text         | null: false,                   |
+| category              | string       | null: false,                   |
+| condition             | string       | null: false,                   |
+| shipping_cost         | integer      | null: false,                   |
+| sender_area           | string       | null: false,                   |
+| delivery_days         | string       | null: false,                   |
+| price                 | integer      | null: false,                   |
+| commission fee        | integer      | null: false,                   |
+| benefit               | integer      | null: false,                   |
+| user_id                  | reference    | null: false, foreign_key: true |
 
-* Database initialization
+- belongs_to :user
+- has_one :order
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+## Orders
 
-* Deployment instructions
+| Column                | Type         | Options                        |
+| --------------------- | ------------ | ------------------------------ |
+| user_id               | reference    | null: false, foreign_key: true |
+| item_id               | reference    | null: false, foreign_key: true |
+| shipping_id           | reference    | null: false, foreign_key: true |
 
-* ...
+- belongs_to :user
+- belongs_to :item
+- has_one :shipping
+
+
+## shipping
+
+| Column                | Type         | Options                        |
+| --------------------- | ------------ | ------------------------------ |
+| post_code             | integer      | null: false,                   |
+| prefecture            | string       | null: false,                   |
+| city_town             | string       | null: false,                   |
+| address_2             | string       | null: false,                   |
+| address_1             | string       | null: false,                   |
+| tel                   | integer      | null: false,                   |
+| item_id               | reference    | null: false, foreign_key: true |
+| user_id               | reference    | null: false, foreign_key: true |
+
+
+- belongs_to :order
+- belongs_to :user
