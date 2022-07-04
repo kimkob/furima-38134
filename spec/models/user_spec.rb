@@ -84,7 +84,7 @@ RSpec.describe User, type: :model do
           @user.valid?
           expect(@user.errors.full_messages).to include( "Family kana can't be blank" )
         end
-        it 'first_name必須' do
+        it 'first_kana必須' do
           @user.first_kana =''
           @user.valid?
           expect(@user.errors.full_messages).to include( "First kana can't be blank" )
@@ -116,15 +116,12 @@ RSpec.describe User, type: :model do
           @user.valid?
           expect(@user.errors.full_messages).to include( "Birthday can't be blank" )
         end
+    end
 
-
-
-      context '新規登録可能' do
-        it '全て正しく入力されている' do
-          expect(@user).to be_valid
-        end
-        
-       end
+    context '新規登録可能' do
+      it '全て正しく入力されている' do
+        expect(@user).to be_valid
+      end
     end
   end
 end
