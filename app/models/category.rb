@@ -1,4 +1,4 @@
-Class Category < ActiveHash::Base
+class Category < ActiveHash::Base
   self.data = [
     { id: 1, name: '---' },
     { id: 2, name: 'メンズ' },
@@ -15,5 +15,4 @@ Class Category < ActiveHash::Base
 
   include ActiveHash::Associations
   has_many :items
-
 end
