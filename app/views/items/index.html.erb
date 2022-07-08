@@ -127,6 +127,7 @@
       新規投稿商品
     </div>
     <ul class='item-lists'>
+    <% unless @item = nil %>
       <% @items.each do |item| %>
       <li class='list'>
         <%#= link_to "#" do %>
