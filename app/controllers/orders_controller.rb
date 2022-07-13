@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!, only: [:index, :create]
   before_action :move_to_index, only: [:index, :create]
-  before_action :item_set, only: [:index, :create, :move_to_index]
+  before_action :item_set, only: [:index, :create]
 
   def index
     @order_shipping = OrderShipping.new
@@ -9,7 +9,6 @@ class OrdersController < ApplicationController
   end
 
   def create
-    item_set
     @order_shipping = OrderShipping.new(order_params)
     if @order_shipping.valid?
       pay_item
@@ -33,7 +32,6 @@ class OrdersController < ApplicationController
   end
 
   def move_to_index
-    item_set
     redirect_to root_path if @item.order.present? || (current_user.id == @item.user_id)
   end
 

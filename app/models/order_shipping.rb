@@ -4,7 +4,7 @@ class OrderShipping
 
   with_options presence: true do
     validates :post_code,     format: { with: /\A[0-9]{3}-[0-9]{4}\z/ }
-    validates :city_town,     format: { with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/ }
+    validates :city_town
     validates :address_2
     validates :tel, format: { with: /\A\d{10,11}\z/ }
     validates :item_id

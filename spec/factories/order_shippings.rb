@@ -4,7 +4,7 @@ FactoryBot.define do
     prefecture_id { 9 }
     city_town { '横浜市' }
     address_2 { '横浜１−１−１' }
-    address_1 { '' }
+    address_1 { 'abc' }
     tel { '01234567890' }
     token { 'tok_abcdefghijk00000000000000000' }
   end
