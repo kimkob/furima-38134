@@ -6,7 +6,6 @@ FactoryBot.define do
     address_2 { '横浜１−１−１' }
     address_1 { '' }
     tel { '01234567890' }
-    token {"tok_abcdefghijk00000000000000000"}
+    token { 'tok_abcdefghijk00000000000000000' }
   end
-
 end
