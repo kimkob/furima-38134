@@ -9,7 +9,7 @@ RSpec.describe OrderShipping, type: :model do
     end
 
     context '内容に問題がない場合' do
-      it '全て正しく入力済' do
+      it '全て正しく入力済かつtoken有り' do
         expect(@order_shipping).to be_valid
       end
       it 'address_1が空欄でも登録可' do
@@ -76,7 +76,11 @@ RSpec.describe OrderShipping, type: :model do
         @order_shipping.valid?
         expect(@order_shipping.errors.full_messages).to include( "User can't be blank" )
       end
-
+      it 'tokenなし' do
+        @order_shipping.token = nil
+        @order_shipping.valid?
+        expect(@order_shipping.errors.full_messages).to include( "Token can't be blank" )
+      end
 
 
 
