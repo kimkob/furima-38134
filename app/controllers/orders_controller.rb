@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!, only: [:index, :create]
   before_action :move_to_index, only: [:index, :create]
-  before_action :item_set, onpy: [:index, :create, :move_to_index]
+  before_action :item_set, only: [:index, :create, :move_to_index]
 
   def index
     @order_shipping = OrderShipping.new
