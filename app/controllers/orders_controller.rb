@@ -5,7 +5,6 @@ class OrdersController < ApplicationController
 
   def index
     @order_shipping = OrderShipping.new
-    item_set
   end
 
   def create
