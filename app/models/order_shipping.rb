@@ -3,10 +3,10 @@ class OrderShipping
   attr_accessor :post_code, :prefecture_id, :city_town, :address_2, :address_1, :tel, :user_id, :item_id, :token
 
   with_options presence: true do
-    validates :post_code,     format: { with: /\A[0-9]{3}-[0-9]{4}\z/ }
+    validates :post_code,     format: { with: /\A[0-9]{3}-[0-9]{4}\z/, allow_blank: true }
     validates :city_town
     validates :address_2
-    validates :tel, format: { with: /\A\d{10,11}\z/ }
+    validates :tel, format: { with: /\A\d{10,11}\z/, allow_blank: true }
     validates :item_id
     validates :user_id
     validates :token
