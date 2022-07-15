@@ -14,78 +14,78 @@ RSpec.describe Item, type: :model do
 
     context '商品出品不可能' do
       # image#
-      it 'imageが空欄' do
+      it '商品画像が空欄' do
         @item.image = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("Image can't be blank")
+        expect(@item.errors.full_messages).to include('商品画像を入力してください')
       end
       # name#
-      it 'nameが空欄' do
+      it '商品名が空欄' do
         @item.name = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("Name can't be blank")
+        expect(@item.errors.full_messages).to include('商品名を入力してください')
       end
-      it 'nameが41文字以上' do
+      it '商品名が41文字以上' do
         @item.name = 'a' * 41
         @item.valid?
-        expect(@item.errors.full_messages).to include('Name is too long (maximum is 40 characters)')
+        expect(@item.errors.full_messages).to include('商品名は40文字以内で入力してください')
       end
       # explain#
-      it 'explainが空欄' do
+      it '商品説明が空欄' do
         @item.explain = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("Explain can't be blank")
+        expect(@item.errors.full_messages).to include('商品の説明を入力してください')
       end
-      it 'explainが1001文字以上' do
+      it '商品説明が1001文字以上' do
         @item.explain = 'a' * 1001
         @item.valid?
-        expect(@item.errors.full_messages).to include('Explain is too long (maximum is 1000 characters)')
+        expect(@item.errors.full_messages).to include('商品の説明は1000文字以内で入力してください')
       end
       # category#
-      it 'category未選択' do
+      it 'カテゴリー未選択' do
         @item.category_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include('Category must be other than 1')
+        expect(@item.errors.full_messages).to include('カテゴリーを選択してください')
       end
       # condition#
-      it 'condition未選択(id = 1)' do
+      it '商品状態未選択(id = 1)' do
         @item.condition_id = '1'
         @item.valid?
-        expect(@item.errors.full_messages).to include('Condition must be other than 1')
+        expect(@item.errors.full_messages).to include('商品の状態を選択してください')
       end
       # shipping_cost#
-      it 'shipping_cost未選択(id = 1)' do
+      it '送料負担未選択(id = 1)' do
         @item.shipping_cost_id = '1'
         @item.valid?
-        expect(@item.errors.full_messages).to include('Shipping cost must be other than 1')
+        expect(@item.errors.full_messages).to include('配送料の負担を選択してください')
       end
       # prefecture#
-      it 'prefecture未選択(id = 1)' do
+      it '都道府県未選択(id = 1)' do
         @item.prefecture_id = '1'
         @item.valid?
-        expect(@item.errors.full_messages).to include('Prefecture must be other than 1')
+        expect(@item.errors.full_messages).to include('発送元の地域を選択してください')
       end
       # shipping_time#
-      it 'shipping_time未選択(id = 1)' do
+      it '発送時期未選択(id = 1)' do
         @item.shipping_time_id = '1'
         @item.valid?
-        expect(@item.errors.full_messages).to include('Shipping time must be other than 1')
+        expect(@item.errors.full_messages).to include('発送までの日数を選択してください')
       end
       # price#
       it '300円未満' do
         @item.price = '200'
         @item.valid?
-        expect(@item.errors.full_messages).to include('Price must be greater than 300')
+        expect(@item.errors.full_messages).to include('販売価格は300円〜9,999,999円の範囲にしてください')
       end
       it '10,000,000円以上' do
         @item.price = '10000000'
         @item.valid?
-        expect(@item.errors.full_messages).to include('Price must be less than 9999999')
+        expect(@item.errors.full_messages).to include('販売価格は300円〜9,999,999円の範囲にしてください')
       end
       it '半角数字以外で入力' do
         @item.price = 'aAａＡ１!あ亜アｱ'
         @item.valid?
-        expect(@item.errors.full_messages).to include('Price is not a number')
+        expect(@item.errors.full_messages).to include('販売価格は300円〜9,999,999円の範囲にしてください')
       end
       # user紐づき#
       it 'userが紐付いていない' do

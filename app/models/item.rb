@@ -13,10 +13,11 @@ class Item < ApplicationRecord
   validates :image, presence: true
   validates :name, presence: true, length: { maximum: 40 }
   validates :explain, presence: true, length: { maximum: 1000 }
-  validates :category_id, numericality: { other_than: 1 }
-  validates :condition_id, numericality: { other_than: 1 }
-  validates :shipping_cost_id, numericality: { other_than: 1 }
-  validates :prefecture_id, numericality: { other_than: 1 }
-  validates :shipping_time_id, numericality: { other_than: 1 }
-  validates :price, presence: true, numericality: { only_integer: true, greater_than: 299, less_than: 10_000_000, allow_blank: true }
+  validates :category_id, numericality: { other_than: 1, message: 'を選択してください' }
+  validates :condition_id, numericality: { other_than: 1, message: 'を選択してください' }
+  validates :shipping_cost_id, numericality: { other_than: 1, message: 'を選択してください' }
+  validates :prefecture_id, numericality: { other_than: 1, message: 'を選択してください' }
+  validates :shipping_time_id, numericality: { other_than: 1, message: 'を選択してください' }
+  validates :price, presence: true,
+                    numericality: { only_integer: true, greater_than: 299, less_than: 10_000_000, message: 'は300円〜9,999,999円の範囲にしてください', allow_blank: true }
 end
