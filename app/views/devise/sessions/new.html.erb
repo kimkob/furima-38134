@@ -28,8 +28,11 @@
   <div class='login-btn'>
     <%= f.submit "ログイン" ,class:"login-red-btn" %>
   </div>
-  <%= link_to 'Googleでログイン', user_google_oauth2_omniauth_authorize_path, method: :post%>
-
+  <div class="form-group">
+    <div class="google_signin">
+      <%= link_to image_tag("btn_google_signin.png"), user_google_oauth2_omniauth_authorize_path, method: :post %>
+    </div>
+  </div>
 </div>
 <% end %>
 
