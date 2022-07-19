@@ -18,3 +18,8 @@
   text-align: center;
   color: red;
 }
+
+.google_signin{
+  margin-top: 50px;
+  justify-content: center;
+}

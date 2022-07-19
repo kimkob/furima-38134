@@ -158,3 +158,8 @@
   text-align: right;
   cursor: pointer;
 }
+
+.google_signin{
+  margin-bottom: 0px;
+  justify-content: center;
+}
